@@ -1,5 +1,4 @@
 import java.util.Scanner;
-
 public class TicTacToe {
     private static final int ROWS = 3;
     private static final int COLS = 3;
@@ -18,8 +17,6 @@ public class TicTacToe {
             while (!gameWon && moveCount < ROWS * COLS) {
                 display();
                 System.out.println("Player " + currentPlayer + ", it's your turn.");
-
-                // Get row and column from player
                 int row = SafeInput.getRangedInt(console, "Enter row: ", 1, 3) - 1;
                 int col = SafeInput.getRangedInt(console, "Enter column: ", 1, 3) - 1;
 
@@ -29,11 +26,9 @@ public class TicTacToe {
                     col = SafeInput.getRangedInt(console, "Enter column: ", 1, 3) - 1;
                 }
 
-                // Place the move and increment counter
                 board[row][col] = currentPlayer;
                 moveCount++;
 
-                // Check for win or tie
                 if (isWin(currentPlayer)) {
                     gameWon = true;
                     display();
@@ -44,7 +39,6 @@ public class TicTacToe {
                     break;
                 }
 
-                // Toggle player
                 currentPlayer = currentPlayer.equals("X") ? "O" : "X";
             }
 
